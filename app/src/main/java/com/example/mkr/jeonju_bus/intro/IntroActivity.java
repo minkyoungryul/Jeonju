@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.example.mkr.jeonju_bus.R;
 import com.example.mkr.jeonju_bus.main.view.MainActivity;
+import com.facebook.stetho.Stetho;
 
 
 /**
@@ -23,6 +24,8 @@ public class IntroActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_intro);
+
+        Stetho.initializeWithDefaults(this);
 
         Handler mHanlder = new Handler();
         mHanlder.postDelayed(new Runnable() {

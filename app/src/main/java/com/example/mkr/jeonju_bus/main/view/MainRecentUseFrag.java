@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.mkr.jeonju_bus.R;
 import com.example.mkr.jeonju_bus.main.data.RecentUseData;
+import com.example.mkr.jeonju_bus.main.presenter.MainRecentUsePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by mkr on 2017-08-21.
  */
 
-public class MainRecentUseFrag extends Fragment {
+public class MainRecentUseFrag extends Fragment implements MainRecentUseView{
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -31,6 +32,8 @@ public class MainRecentUseFrag extends Fragment {
     LinearLayoutManager mLayoutManager;
     MainRecentUseAdapter adapter;
     List<RecentUseData> datas = new ArrayList<>();
+
+    MainRecentUsePresenter presenter;
 
     @Nullable
     @Override
@@ -49,6 +52,8 @@ public class MainRecentUseFrag extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = new MainRecentUsePresenter();
+        presenter.attachView(this);
         init();
     }
 
@@ -56,5 +61,16 @@ public class MainRecentUseFrag extends Fragment {
         for(int i=0; i<10; i++){
             datas.add(new RecentUseData());
         }
+    }
+
+    @Override
+    public void notConnectNetworking() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
     }
 }

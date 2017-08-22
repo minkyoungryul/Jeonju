@@ -24,6 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //    public MessageDBController messageDBController;
 //    public BestFriendDBController bestFriendDBController;
 //    public MyRoomDBController myRoomDBController;
+    public SearchDBController searchDBController;
 
     public static synchronized DBHelper getInstance(Context context) {
         if (instance == null)
@@ -39,6 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        messageDBController = new MessageDBController(compositeSubscription, this);
 //        bestFriendDBController = new BestFriendDBController(compositeSubscription, this);
 //        myRoomDBController = new MyRoomDBController(compositeSubscription, this);
+        searchDBController = new SearchDBController(compositeSubscription, this);
 
     }
 
@@ -66,6 +68,7 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
 //            db.execSQL(CRETE_TABLE1);
 //            db.execSQL(MessageDBController.CREATE_MESSAGE_TABLE);
+            db.execSQL(SearchDBController.CREATE_RECENT_USE_TABLE);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,6 +94,9 @@ public class DBHelper extends SQLiteOpenHelper {
 //        query = "DROP TABLE IF EXISTS " + BestFriendDBController._FRIEND_IN_BEST_LIST_TABLE_NAME;
 //        db.execSQL(query);
 
+        String query = "DROP TABLE IF EXISTS " + SearchDBController._RECENT_USE_TABLE_NAME;
+        db.execSQL(query);
+
         onCreate(db);
     }
 
@@ -106,6 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //            messageDBController.open(db);
 //            bestFriendDBController.open(db);
 //            myRoomDBController.open(db);
+            searchDBController.open(db);
         }
     }
 

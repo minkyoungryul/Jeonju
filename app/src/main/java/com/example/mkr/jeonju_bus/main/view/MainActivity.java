@@ -1,5 +1,6 @@
 package com.example.mkr.jeonju_bus.main.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mkr.jeonju_bus.R;
+import com.example.mkr.jeonju_bus.common.view.MvpView;
+import com.example.mkr.jeonju_bus.main.presenter.MainPresenter;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -21,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by mkr on 2017-08-21.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     @BindView(R.id.ib_menu)
     ImageButton ib_menu;
@@ -32,11 +35,16 @@ public class MainActivity extends AppCompatActivity {
     FragmentTabHost mTabHost;
     SlidingRootNav sliding_menu;
 
+    MainPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        presenter = new MainPresenter();
+        presenter.attachView(this);
 
         init();
         setLisenter();
@@ -92,5 +100,21 @@ public class MainActivity extends AppCompatActivity {
                 sliding_menu.closeMenu();
             }
         });
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
+    public void notConnectNetworking() {
+
     }
 }

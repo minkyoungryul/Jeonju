@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.mkr.jeonju_bus.R;
 import com.example.mkr.jeonju_bus.main.data.BookMarkData;
+import com.example.mkr.jeonju_bus.main.presenter.MainBookmarkPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by mkr on 2017-08-21.
  */
 
-public class MainBookmarkFrag extends Fragment {
+public class MainBookmarkFrag extends Fragment implements MainBookmarkView {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -31,6 +32,7 @@ public class MainBookmarkFrag extends Fragment {
     LinearLayoutManager mLayoutManager;
     MainBookmarkAdapter adapter;
     List<BookMarkData> datas = new ArrayList<>();
+    MainBookmarkPresenter presenter;
 
     @Nullable
     @Override
@@ -49,6 +51,10 @@ public class MainBookmarkFrag extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        presenter = new MainBookmarkPresenter();
+        presenter.attachView(this);
+
         init();
     }
 
@@ -56,5 +62,16 @@ public class MainBookmarkFrag extends Fragment {
         for (int i=0; i<10; i++) {
             datas.add(new BookMarkData());
         }
+    }
+
+    @Override
+    public void notConnectNetworking() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
     }
 }
