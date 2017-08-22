@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 .withMenuLayout(R.layout.menu_left_drawer)
                 .inject();
 
-
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
