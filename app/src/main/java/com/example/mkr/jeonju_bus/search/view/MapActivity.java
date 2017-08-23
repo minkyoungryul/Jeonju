@@ -50,6 +50,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
     @BindView(R.id.boxMap)
     RelativeLayout boxMap;
 
+    boolean isGPSEnabled = false;
+    boolean isNetWorkEnabled = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +68,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
 //        MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
 //        mapFragment.getMapAsync(this);
 
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
 
         //GPS가 켜져있는지 체크
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -75,6 +78,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
             startActivity(intent);
             finish();
         }
+
+        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        isNetWorkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        Logger.log("#5 GPS->"+isGPSEnabled+","+isNetWorkEnabled);
 
         //마시멜로 이상이면 권한 요청하기
         if(Build.VERSION.SDK_INT >= 23){
@@ -118,6 +125,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
             return;
         }
         //요청
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 10, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 10, locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 10, locationListener);
 
     }
