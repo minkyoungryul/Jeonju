@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="최근 이용"
                 android:textColor="@color/selector_tab_text_color"
+                android:textSize="15dp"
                 android:textStyle="bold"/>
 
 

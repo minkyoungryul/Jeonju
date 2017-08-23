@@ -1,7 +1,9 @@
 package com.example.mkr.jeonju_bus.main.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.example.mkr.jeonju_bus.R;
 import com.example.mkr.jeonju_bus.common.view.MvpView;
 import com.example.mkr.jeonju_bus.main.presenter.MainPresenter;
+import com.example.mkr.jeonju_bus.search.view.SearchActivity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -24,13 +27,16 @@ import butterknife.ButterKnife;
  * Created by mkr on 2017-08-21.
  */
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends FragmentActivity implements MainView {
 
     @BindView(R.id.ib_menu)
     ImageButton ib_menu;
 
     @BindView(R.id.activity_main)
     LinearLayout container;
+
+    @BindView(R.id.ll_search)
+    LinearLayout ll_search;
 
     FragmentTabHost mTabHost;
     SlidingRootNav sliding_menu;
@@ -85,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setLisenter() {
+        ll_search.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+        });
 
         ib_menu.setOnClickListener(v->{
             if(sliding_menu.isMenuHidden()){
