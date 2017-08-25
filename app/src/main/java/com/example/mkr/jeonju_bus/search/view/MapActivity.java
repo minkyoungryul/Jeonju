@@ -55,6 +55,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     boolean isGPSEnabled = false;
     boolean isNetWorkEnabled = false;
+    SupportMapFragment mapFragment;
 
 
     @Override
@@ -76,8 +77,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 //        FragmentManager fragmentManager = getFragmentManager();
 //        MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
 //        mapFragment.getMapAsync(this);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
 
         locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
@@ -162,7 +162,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             Logger.log("#10 mLatitude ->" + mLatitude + ", " + mLongitude);
 
 //            맵생성
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+//            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 //            콜백클래스 설정
             mapFragment.getMapAsync(MapActivity.this);      // 맵이 안켜진상태에서 뒤로가기 해버리면 튕김 null 값. getChildFragmentManager()? 을 쓰라고함. 하지만 FragmentActivity에선 사용할수없음. Fragment에서만 사용 가능
 
