@@ -75,5 +75,9 @@ public class SearchActivity extends AppCompatActivity{
             Intent intent = new Intent(SearchActivity.this, MapActivity.class);
             startActivity(intent);
         });
+        ib_search.setOnClickListener(v->{
+            Intent intent = new Intent(SearchActivity.this, BusStopListActivity.class);
+            startActivity(intent);
+        });
     }
 }
