@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.mkr.jeonju_bus.common.presenter.Presenter;
 import com.example.mkr.jeonju_bus.search.data.BusStopData;
+import com.example.mkr.jeonju_bus.search.data.BusStopListInfo;
 import com.example.mkr.jeonju_bus.search.model.BusStopListModel;
 import com.example.mkr.jeonju_bus.search.view.BusStopListView;
 import com.example.mkr.jeonju_bus.util.Logger;
@@ -49,10 +50,10 @@ public class BusStopListPresenter implements Presenter<BusStopListView> {
         Disposable disposable = model.getBusStopList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<BusStopData>() {
+                .subscribe(new Consumer<BusStopListInfo>() {
                     @Override
-                    public void accept(BusStopData busStopData) throws Exception {
-                        Logger.log("#13 busStopData->"+busStopData.toString());
+                    public void accept(BusStopListInfo busStopListInfo) throws Exception {
+                        Logger.log("#13 busStopListInfo->"+busStopListInfo.toString());
                     }
                 });
     }

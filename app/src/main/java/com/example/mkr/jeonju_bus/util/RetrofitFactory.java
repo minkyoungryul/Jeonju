@@ -26,6 +26,7 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
  * Created by mkr on 2017-08-21.
@@ -41,7 +42,8 @@ public class RetrofitFactory{
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Variable._SERVER_HOST)
-                .addConverterFactory(GsonConverterFactory.create(getGson()))
+//                .addConverterFactory(GsonConverterFactory.create(getGson()))
+                .addConverterFactory(SimpleXmlConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getClient())
                 .build();

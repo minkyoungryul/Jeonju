@@ -1,17 +1,30 @@
 package com.example.mkr.jeonju_bus.search.data;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 /**
  * Created by mkr on 2017-09-01.
  */
 
+@Element(name = "list")
 public class BusStopData {
+
+    @Element(name = "reMark")
     private String reMark;
+    @Element(name = "searchFld")
     private String searchFld;
+    @Element(name = "searchNm")
     private String searchNm;
+    @Element(name = "stopId")
     private String stopId;
+    @Element(name = "stopKname")
     private String stopKname;
+    @Element(name = "stopStandardId")
     private String stopStandardid;
+    @Element(name = "stopX")
     private String stopX;
+    @Element(name = "stopY")
     private String stopY;
 
     public BusStopData(String reMark, String searchFld, String searchNm, String stopId, String stopKname, String stopStandardid, String stopX, String stopY) {
