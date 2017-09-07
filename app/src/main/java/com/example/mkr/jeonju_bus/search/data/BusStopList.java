@@ -10,10 +10,24 @@ import java.util.List;
  * Created by minkr on 2017-09-02.
  */
 
-@Root(name = "list", strict = false)
+@Root(name = "routeList", strict = false)
 public class BusStopList {
-    @Element(name = "list")
-    private BusStopData list;
+    @ElementList(name = "list")
+    private List<BusStopData> list;
 
+//    public BusStopData getObject() {
+//
+//        return object;
+//    }
+//
+//    public void setObject(BusStopData object) {
+//        this.object = object;
+//    }
 
+    @Override
+    public String toString() {
+        return "BusStopList{" +
+                "list=" + list +
+                '}';
+    }
 }

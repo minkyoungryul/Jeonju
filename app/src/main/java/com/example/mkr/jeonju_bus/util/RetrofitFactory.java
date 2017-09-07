@@ -1,5 +1,7 @@
 package com.example.mkr.jeonju_bus.util;
 
+import android.util.Xml;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

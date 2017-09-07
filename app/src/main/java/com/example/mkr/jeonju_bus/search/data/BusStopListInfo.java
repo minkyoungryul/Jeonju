@@ -1,10 +1,14 @@
 package com.example.mkr.jeonju_bus.search.data;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementArray;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.convert.Convert;
 
 import java.util.List;
+
+import retrofit2.http.Path;
 
 /**
  * Created by minkr on 2017-09-02.
@@ -15,13 +19,8 @@ public class BusStopListInfo {
     private String code;
     @Element(name = "msg")
     private String msg;
-    @Element(name = "routeList", data = false, required = true)
-    public RouteList routeList;
-
-    public class RouteList {
-        @ElementList
-        public List<BusStopData> list;
-    }
+    @Element(name = "routeList")
+    public BusStopList routeList;
 
     public BusStopListInfo(){}
 
@@ -41,14 +40,6 @@ public class BusStopListInfo {
         this.msg = msg;
     }
 
-//    public List<RoutList> getRouteList() {
-//        return routeList;
-//    }
-//
-//    public void setRouteList(List<RoutList> routeList) {
-//        this.routeList = routeList;
-//    }
-
     @Override
     public String toString() {
         return "BusStopListInfo{" +
@@ -58,3 +49,4 @@ public class BusStopListInfo {
                 '}';
     }
 }
+

@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
  * Created by mkr on 2017-09-01.
  */
 
-@Element(name = "list")
+@Root(name = "list", strict = false)
 public class BusStopData {
 
     @Element(name = "reMark")
