@@ -15,13 +15,8 @@ public class BusStopListInfo {
     private String code;
     @Element(name = "msg")
     private String msg;
-    @Element(name = "routeList", data = false, required = true)
-    public RouteList routeList;
-
-    public class RouteList {
-        @ElementList
-        public List<BusStopData> list;
-    }
+    @ElementList(data = false, inline = false, required = false)
+    public List<BusStopList> routeList;
 
     public BusStopListInfo(){}
 

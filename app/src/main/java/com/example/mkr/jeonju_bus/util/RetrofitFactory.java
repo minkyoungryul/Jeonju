@@ -3,6 +3,9 @@ package com.example.mkr.jeonju_bus.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.simpleframework.xml.convert.AnnotationStrategy;
+import org.simpleframework.xml.core.Persister;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.net.CookieManager;
@@ -43,7 +46,9 @@ public class RetrofitFactory{
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Variable._SERVER_HOST)
 //                .addConverterFactory(GsonConverterFactory.create(getGson()))
-                .addConverterFactory(SimpleXmlConverterFactory.create())
+                .addConverterFactory(SimpleXmlConverterFactory.createNonStrict(
+                        new Persister(new AnnotationStrategy())
+                ))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getClient())
                 .build();

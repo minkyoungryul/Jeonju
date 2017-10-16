@@ -10,7 +10,7 @@ import java.util.List;
  * Created by minkr on 2017-09-02.
  */
 
-@Root(name = "list", strict = false)
+@Root(name = "routeList", strict = false)
 public class BusStopList {
     @Element(name = "list")
     private BusStopData list;
