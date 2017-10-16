@@ -9,6 +9,9 @@ import com.example.mkr.jeonju_bus.search.model.BusStopListModel;
 import com.example.mkr.jeonju_bus.search.view.BusStopListView;
 import com.example.mkr.jeonju_bus.util.Logger;
 
+import org.reactivestreams.Publisher;
+
+import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

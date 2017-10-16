@@ -9,6 +9,8 @@ import java.util.Map;
 import io.reactivex.Maybe;
 import retrofit2.Converter;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**

@@ -27,12 +27,14 @@
         android:theme="@style/AppTheme">
 
         <!--회사컴-->
-        <!--<meta-data-->
-        <!--android:name="com.google.android.maps.v2.API_KEY"-->
-        <!--android:value="AIzaSyCT3Y1ck0C_A53n3B-1hn_HvRwna4lpuco"/>-->
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyATm5E5n3yP2Jjpf6lGqJT3CvVseT1mHyk" />
+        android:name="com.google.android.maps.v2.API_KEY"
+        android:value="AIzaSyCT3Y1ck0C_A53n3B-1hn_HvRwna4lpuco"/>
+
+        <!--집 노트북-->
+        <!--<meta-data-->
+            <!--android:name="com.google.android.maps.v2.API_KEY"-->
+            <!--android:value="AIzaSyATm5E5n3yP2Jjpf6lGqJT3CvVseT1mHyk" />-->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
