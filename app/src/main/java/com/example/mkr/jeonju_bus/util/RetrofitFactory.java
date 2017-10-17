@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import org.simpleframework.xml.convert.AnnotationStrategy;
 import org.simpleframework.xml.core.Persister;
+import org.simpleframework.xml.strategy.TreeStrategy;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -48,6 +49,7 @@ public class RetrofitFactory{
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Variable._SERVER_HOST)
 //                .addConverterFactory(GsonConverterFactory.create(getGson()))
+//                .addConverterFactory(SimpleXmlConverterFactory.create())
                 .addConverterFactory(SimpleXmlConverterFactory.createNonStrict(
                         new Persister(new AnnotationStrategy())
                 ))
